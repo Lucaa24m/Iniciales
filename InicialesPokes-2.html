@@ -1,0 +1,81 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Aleatorio</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .pokemon-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            color: #ffcb05;
+        }
+
+        #pokemon-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="pokemon-container">
+        <h1>¡Haz clic para ver un Pokémon!</h1>
+        <p id="pokemon-name">Haz clic en cualquier parte</p>
+    </div>
+
+    <script>
+        // Listas de Pokémon (asegúrate de que cada generación tenga 50 Pokémon)
+        const gen1 = ["Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", /*...otros 44 Pokémon...*/];
+        const gen2 = ["Chikorita", "Bayleef", "Meganium", /*...otros 47 Pokémon...*/];
+        const gen3 = ["Treecko", "Grovyle", "Sceptile", /*...otros 47 Pokémon...*/];
+        const gen4 = ["Turtwig", "Grotle", "Torterra", /*...otros 47 Pokémon...*/];
+        const gen5 = ["Snivy", "Servine", "Serperior", /*...otros 47 Pokémon...*/];
+        const gen6 = ["Chespin", "Quilladin", "Chesnaught", /*...otros 47 Pokémon...*/];
+        const gen7 = ["Rowlet", "Dartrix", "Decidueye", /*...otros 47 Pokémon...*/];
+        const gen8 = ["Grookey", "Thwackey", "Rillaboom", /*...otros 47 Pokémon...*/];
+        const gen9 = ["Sprigatito", "Floragato", "Meowscarada", /*...otros 47 Pokémon...*/];
+
+        const allPokemons = [...gen1, ...gen2, ...gen3, ...gen4, ...gen5, ...gen6, ...gen7, ...gen8, ...gen9];
+        const colors = ["#1E90FF", "#32CD32", "#FF4500"]; // Azul, Verde y Rojo
+
+        function getRandomPokemon() {
+            const randomIndex = Math.floor(Math.random() * allPokemons.length);
+            return allPokemons[randomIndex];
+        }
+
+        function getRandomColor() {
+            const randomIndex = Math.floor(Math.random() * colors.length);
+            return colors[randomIndex];
+        }
+
+        // Evento de clic para mostrar un Pokémon aleatorio
+        document.body.addEventListener('click', (event) => {
+            // Verifica si es un clic izquierdo
+            if (event.button === 0) {
+                const pokemonName = getRandomPokemon();
+                const pokemonColor = getRandomColor();
+                document.getElementById('pokemon-name').textContent = pokemonName;
+                document.getElementById('pokemon-name').style.color = pokemonColor;
+            }
+        });
+    </script>
+</body>
+</html>
